@@ -5,7 +5,7 @@ const Navbar = () => {
 
     return (
         <div>
-            <nav className="flex flex-row items-center justify-center bg-white px-[20px]">
+            <nav className="flex flex-row items-center justify-center px-[20px] bg-[rgb(var(--secondary-rgb))]">
                 {/* logo image */}
                 <div className="h-[50px] w-[50px] flex basis-1/3">
                     <img src="/test-logo.png" />
