@@ -13,9 +13,12 @@ export default function Home() {
 
       {/* find a bathroom button, + settings/filters */}
       <Button_filters />
-
+      
       {/* Use fixed dimensions for the Map container */}
-      <Map />
+      <Map 
+        setWheelchair: true
+        set24hr: true
+      />
 
       {/* extra options (eg. report an error) */}
       <div className="flex h-[15%] w-[15%] justify-end ml-auto mr-0">
