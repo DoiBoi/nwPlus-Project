@@ -67,24 +67,11 @@ const Map = () => {
             navigator.geolocation.getCurrentPosition(function(position) {
                 const userLocationCoord = [position.coords.longitude, position.coords.latitude];
                 addUserLocationPoint(map, userLocationCoord);
-                alert("here!");
-
-                // map.flyTo({
-                //     center: [position.coords.longitude, position.coords.latitude],
-                //     zoom: 8,
-                //     speed: 0.2,
-                //     curve: 1,
-                //     duration: 1200,
-                //     easing(t) {
-                //         return t;
-                //     }
-                // });
 
                 map.fitBounds([
                     [position.coords.longitude-0.005, position.coords.latitude-0.005], // southwestern corner of the bounds
                     [position.coords.longitude+0.005, position.coords.latitude+0.005] // northeastern corner of the bounds
                 ]);
-                // console.log("Longitude is :", );
             });
         }
 
@@ -236,19 +223,6 @@ const Map = () => {
         }
     }, [data]);
 
-    // useEffect(() => {
-    //     if (navigator.geolocation) {
-    //         navigator.permissions
-    //             .query({ name: "geolocation" })
-    //             .then(function (result) {
-    //                 console.log(result);
-    //             });
-    //     } else {
-    //         console.log("Geolocation is not supported by this browser.");
-    //     }
-    //
-    //
-    // }, []);
 
     return (
         <div className="flex items-center justify-center">
