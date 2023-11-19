@@ -33,14 +33,11 @@ const PointDetails = ({ details, onClose }) => {
 };
 
 
-const Map = () => {
+const Map = ({ filterWheelchair, filter24h }) => {
     const [map, setMap] = useState(null);
     const [data, setData] = useState(null);
     const [selectedPoint, setSelectedPoint] = useState(null);
     
-    const [filterWheelchair, setWheelchair] = useState(true);
-    const [filter24h, set24h] = useState(false)
-
     const initializeMap = (data) => {
         mapboxgl.accessToken = 'pk.eyJ1IjoiY2FsY2l1bS1kb2kiLCJhIjoiY2xwNXBxZnI5MWh1bTJqbzh2bW81bW4xNyJ9.lmPvaF2IOnm9glibmNPrFw';
 

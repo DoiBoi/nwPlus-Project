@@ -7,13 +7,13 @@ const Navbar = () => {
         <div>
             <nav className="flex flex-row items-center justify-center px-[20px] bg-[rgb(var(--secondary-rgb))]">
                 {/* logo image */}
-                <div className="h-[50px] w-[50px] flex basis-1/3">
-                    <img src="/test-logo.png" />
+                <div className="h-[40px] w-[40px] flex basis-1/3">
+                    <img src="/logo.png" />
                 </div>
 
                 {/* Title */}
                 <div className="flex basis-1/3 items-center justify-center">
-                    <h1 className="text-xl">Washroom wayfinder</h1>
+                    <h1 className="text-xl font-semibold">washroom wayfinder</h1>
                 </div>
 
                 {/* Extra links */}
