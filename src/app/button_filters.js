@@ -16,13 +16,20 @@ const Button_filters = () => {
                 <input id="big-button" type="submit" value="Find washrooms near me!" />
             </div>
 
-            <div id="filters" class="flex flex-col basis-1/2">
-                {/* This is where the other options are */}
-                <input type="checkbox" id="wheel_access" name="wheel_access" value="wheel_access" />
-                <label for="wheel_access">Wheel accessible?</label>
-                <input type="checkbox" id="24_hour" name="24_hour" value="24_hour" />
-                <label for="24_hour">All day availability?</label>
+            <div>
+                <div id="filters" class="flex flex-col basis-1/2">
+                    {/* This is where the other options are */}
+                    <div className='flex flex-row justify-center'>
+                        <input type="checkbox" id="wheel_access" name="wheel_access" value="wheel_access" />
+                        <label for="wheel_access">Wheel accessible?</label>
+                    </div>
+                    <div className='flex flex-row justify-center'>
+                        <input type="checkbox" id="24_hour" name="24_hour" value="24_hour" />
+                        <label for="24_hour">All day availability?</label>
+                    </div>
+                </div>
             </div>
+            
         </form>
     )
 };
