@@ -34,7 +34,7 @@ const Map = () => {
             navigator.geolocation.getCurrentPosition(function(position) {
                 const userLocationCoord = [position.coords.longitude, position.coords.latitude];
                 addUserLocationPoint(map, userLocationCoord);
-                alert("here!");
+                // alert("here!");
 
                 // map.flyTo({
                 //     center: [position.coords.longitude, position.coords.latitude],
