@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 
 const initializeMap = () => {
@@ -10,13 +10,79 @@ const initializeMap = () => {
         center: [-123.1216, 49.2827], // Vancouver, BC coordinates [lng, lat]
         zoom: 9, // starting zoom
     });
+
+
+
+    addPoint(map, [-123.103599022256, 49.2778209665246]);
+
+
+
+
     // Clean up on unmount
     return () => map.remove();
 };
 
+const addPoint = (map, coord) => {
+    map.on('load', () => {
+        map.addSource('point', {
+            type: 'geojson',
+            data: {
+                type: 'FeatureCollection',
+                features: [
+                    {
+                        type: 'Feature',
+                        geometry: {
+                            type: 'Point',
+                            coordinates: coord // Longitude and latitude of the point
+                        },
+                        properties: {
+                            title: 'My Point',
+                            description: 'This is a sample point.'
+                        }
+                    }
+                ]
+            }
+        });
+
+        // Add a layer to render the point on the map
+        map.addLayer({
+            id: 'point',
+            type: 'circle',
+            source: 'point',
+            paint: {
+                'circle-radius': 8,
+                'circle-color': '#FF0000' // Red color for the point
+            }
+        });
+
+        // Create a popup for the point
+        const popup = new mapboxgl.Popup({
+            closeButton: false,
+            closeOnClick: false
+        });
+
+        // Display a popup when the point is clicked
+        map.on('mouseenter', 'point', (e) => {
+            const coordinates = e.features[0].geometry.coordinates.slice();
+            const { title, description } = e.features[0].properties;
+
+            popup.setLngLat(coordinates)
+                .setHTML(`<h3>${title}</h3><p>${description}</p>`)
+                .addTo(map);
+        });
+
+        // Hide the popup when the mouse leaves the point
+        map.on('mouseleave', 'point', () => {
+            popup.remove();
+        });
+    });
+}
+
 const getWashrooms = () => {
     
 }
+
+
 
 
 
@@ -26,7 +92,7 @@ const Map = () => {
 
     useEffect(() => {
         const cleanupMap = initializeMap();
-        setWasherooms(getWashrooms);
+        // setWasherooms(getWashrooms);
         return cleanupMap;
     }, []); // Run only once on mount
 
