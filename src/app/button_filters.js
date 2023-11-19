@@ -7,6 +7,8 @@ import styles from './css/button.css'
 // Component for the big "Find bathroom" button, plus options
 const Button_filters = () => {
     // use effect, whatever else goes here
+    const[wheelchairCheckbox, setWheelchairCheckbox] = useState(false);
+
 
     return (
         <div className="justify-center">
@@ -18,10 +20,11 @@ const Button_filters = () => {
                 </div>
 
                 <div>
+                    return (
                     <div id="filters" class="flex flex-col basis-1/2">
                         {/* This is where the other options are */}
                         <div className='flex flex-row justify-center'>
-                            <input type="checkbox" id="wheel_access" name="wheel_access" value="wheel_access" />
+                            <input type="checkbox" id="wheel_access" name="wheel_access" value="wheel_access" onClick={() => setWheelchairCheckbox(true)}/>
                             <label for="wheel_access">Wheel accessible?</label>
                         </div>
                         <div className='flex flex-row justify-center'>
@@ -29,6 +32,7 @@ const Button_filters = () => {
                             <label for="24_hour">All day availability?</label>
                         </div>
                     </div>
+                    )
                 </div>
             </form>
         </div>

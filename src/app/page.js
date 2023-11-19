@@ -12,13 +12,17 @@ export default function Home() {
       <Navbar />
 
       {/* find a bathroom button, + settings/filters */}
-      <Button_filters />
+        <div>
+            <Button_filters />
+            <p>Data from Child: {wheelchairCheckbox}</p>
+        </div>
+
+
+    }
       
       {/* Use fixed dimensions for the Map container */}
-      <Map 
-        setWheelchair: true
-        set24hr: true
-      />
+
+      <Map />
 
       {/* extra options (eg. report an error) */}
       <div className="flex h-[15%] w-[15%] justify-end ml-auto mr-0">
