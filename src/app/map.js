@@ -13,8 +13,12 @@ const Map = () => {
             const newMap = new mapboxgl.Map({
                 container: 'map', // container ID
                 style: 'mapbox://styles/mapbox/streets-v11', // style URL
-                center: [-123.1216, 49.2827], // Vancouver, BC coordinates [lng, lat]
-                zoom: 9, // starting zoom
+                center: [-123.1216, 49.4827], // Vancouver, BC coordinates [lng, lat]
+                zoom: 5, // starting zoom (adjust as needed)
+                maxBounds: [
+                    [-123.3316, 49.0015], // Southwest coordinates of Greater Vancouver
+                    [-122.8561, 49.5]  // Northeast coordinates of Greater Vancouver
+                ],
             });
 
             setMap(newMap);
@@ -36,31 +40,49 @@ const Map = () => {
     };
 
     const addPoint = (map, coord, id, washroomProperties) => {
-        map.addSource(`point-${id}`, {
-            type: 'geojson',
-            data: {
-                type: 'FeatureCollection',
-                features: [
-                    {
-                        type: 'Feature',
-                        geometry: {
-                            type: 'Point',
-                            coordinates: coord,
-                        },
-                        properties: washroomProperties,
-                    },
-                ],
-            },
-        });
+        map.loadImage('marker.png', (error, image) => {
+            if (error) throw error;
 
-        map.addLayer({
-            id: `point-${id}`,
-            type: 'circle',
-            source: `point-${id}`,
-            paint: {
-                'circle-radius': 4,
-                'circle-color': '#FF0000',
-            },
+            map.addImage(`marker-${id}`, image);
+
+            map.addSource(`point-${id}`, {
+                type: 'geojson',
+                data: {
+                    type: 'FeatureCollection',
+                    features: [
+                        {
+                            type: 'Feature',
+                            geometry: {
+                                type: 'Point',
+                                coordinates: coord,
+                            },
+                            properties: washroomProperties,
+                        },
+                    ],
+                },
+            });
+
+            map.addLayer({
+                id: `point-${id}`,
+                type: 'symbol',
+                source: `point-${id}`,
+                layout: {
+                    'icon-image': `marker-${id}`,
+                    'icon-size': 1.5, // Adjust the size as needed
+                    'icon-anchor': 'bottom', // Adjust the anchor point as needed
+                },
+            });
+
+            // Add hover effect
+            map.on('mouseenter', `point-${id}`, () => {
+                map.getCanvas().style.cursor = 'pointer'; // Change cursor on hover
+                map.setPaintProperty(`point-${id}`, 'icon-color', '#00F'); // Change color on hover
+            });
+
+            map.on('mouseleave', `point-${id}`, () => {
+                map.getCanvas().style.cursor = ''; // Revert cursor on mouseout
+                map.setPaintProperty(`point-${id}`, 'icon-color', '#FF0000'); // Revert color on mouseout
+            });
         });
     };
 
