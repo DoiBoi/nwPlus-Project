@@ -5,12 +5,12 @@
 :root {
   --foreground-rgb: 0, 0, 0;
 
-  --secondary-rgb: 250, 235, 215;
+  --secondary-rgb: 255, 255, 255;
   /* grey */
-  --background-start-rgb: 93, 93, 93;
+  --background-start-rgb: 255, 255, 255;
 
   /* grey */
-  --background-end-rgb: 93, 93, 93;
+  --background-end-rgb: 200, 200, 200;
 }
 
 /* This is just for dark mode */
