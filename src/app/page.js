@@ -17,7 +17,6 @@ export default function Home() {
       {/* Use fixed dimensions for the Map container */}
       <Map />
 
-
       {/* extra options (eg. report an error) */}
       <div className="flex h-[15%] w-[15%] justify-end ml-auto mr-0">
         <Report />

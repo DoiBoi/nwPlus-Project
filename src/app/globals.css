@@ -4,11 +4,13 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  /* beige */
-  --background-start-rgb: 217, 185, 155;
 
-  /* also beige */
-  --background-end-rgb: 217, 185, 155;
+  --secondary-rgb: 250, 235, 215;
+  /* grey */
+  --background-start-rgb: 93, 93, 93;
+
+  /* grey */
+  --background-end-rgb: 93, 93, 93;
 }
 
 /* This is just for dark mode */
@@ -28,6 +30,8 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+
+    overflow-x: hidden;
 }
 
 .white-box {

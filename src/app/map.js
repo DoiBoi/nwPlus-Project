@@ -223,7 +223,6 @@ const Map = () => {
         }
     }, [data]);
 
-
     return (
         <div className="flex items-center justify-center">
             <div className="centered-container flex-row">

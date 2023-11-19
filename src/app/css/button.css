@@ -1,1 +1,24 @@
 /* Styling for big button will go here */
+#big-button {
+    background-color: rgb(var(--secondary-rgb));
+    margin: 20px;
+    padding: 30px;
+    border: solid 1px black;
+    border-radius: 10px;
+
+    font-size: 20px;
+    /* color: black; */
+}
+
+/* Filters next to big button */
+#filters {
+    background-color: rgb(var(--secondary-rgb));
+    height: auto;
+    width: auto;
+
+    justify-content: center;
+}
+
+#filters input {
+    margin-right: 20px;
+}
