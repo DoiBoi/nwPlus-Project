@@ -13,7 +13,8 @@ const Navbar = () => {
 
                 {/* Title */}
                 <div className="flex basis-1/3 items-center justify-center">
-                    <h1 className="text-xl font-semibold">washroom wayfinder</h1>
+                    <img src="/header_new.png" />
+
                 </div>
 
                 {/* Extra links */}
