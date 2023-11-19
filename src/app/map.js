@@ -7,17 +7,27 @@ const initializeMap = () => {
     const map = new mapboxgl.Map({
         container: 'map', // container ID
         style: 'mapbox://styles/mapbox/streets-v11', // style URL
-        center: [-74.5, 40], // starting position [lng, lat]
+        center: [-123.1216, 49.2827], // Vancouver, BC coordinates [lng, lat]
         zoom: 9, // starting zoom
     });
-
     // Clean up on unmount
     return () => map.remove();
 };
 
+const getWashrooms = () => {
+    
+}
+
+
+
 const Map = () => {
+    const [washrooms, setWashrooms] = useState(null);
+
+
     useEffect(() => {
-        initializeMap();
+        const cleanupMap = initializeMap();
+        setWasherooms(getWashrooms);
+        return cleanupMap;
     }, []); // Run only once on mount
 
     return <div id="map" style={{ width: '100%', height: '400px' }} />;
