@@ -69,7 +69,7 @@ export default function Home() {
                   checked={twentyFourHour}
                   onChange={() => setTwentyFourHour(!twentyFourHour)}
                 />
-                <label htmlFor="24_hour" style={{ fontSize: '14px' }}> Requir 24 hour availability?</label>
+                <label htmlFor="24_hour" style={{ fontSize: '14px' }}> Require 24 hour availability?</label>
 
               </div>
             </div>
