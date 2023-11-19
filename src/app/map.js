@@ -10,14 +10,6 @@ const initializeMap = () => {
         zoom: 9, // starting zoom
     });
 
-
-
-
-
-
-
-
-    // Clean up on unmount
     return () => map.remove();
 };
 
@@ -81,10 +73,6 @@ const getWashrooms = () => {
     
 }
 
-
-
-    return () => map.remove();
-};
 
 
 
