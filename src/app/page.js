@@ -61,7 +61,7 @@ export default function Home() {
           </form>
         )}
 
-        {showMap && <Map wheelAccess={wheelAccess} twentyFourHour={twentyFourHour} />}
+        {showMap && <Map filterWheelchair={wheelAccess} filter24h={twentyFourHour} />}
 
         {/* extra options (eg. report an error) */}
         <div className="flex h-[15%] w-[15%] justify-end ml-auto mr-0">

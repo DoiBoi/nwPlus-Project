@@ -24,7 +24,7 @@ const PointDetails = ({ details, onClose }) => {
                     {isWheelchairAccessible ? 'Wheelchair accessible' : 'Not wheelchair accessible'}
                 </h5>
                 <h5 className={`text-xs ${is24h ? 'text-green-800' : 'text-red-800'}`}>
-                    {is24h  ? 'Available 24h' : 'Not available 24h'}
+                    {is24h ? 'Available 24h' : 'Not available 24h'}
                 </h5>
 
             </div>
@@ -37,7 +37,7 @@ const Map = ({ filterWheelchair, filter24h }) => {
     const [map, setMap] = useState(null);
     const [data, setData] = useState(null);
     const [selectedPoint, setSelectedPoint] = useState(null);
-    
+
     const initializeMap = (data) => {
         mapboxgl.accessToken = 'pk.eyJ1IjoiY2FsY2l1bS1kb2kiLCJhIjoiY2xwNXBxZnI5MWh1bTJqbzh2bW81bW4xNyJ9.lmPvaF2IOnm9glibmNPrFw';
 
@@ -64,13 +64,13 @@ const Map = ({ filterWheelchair, filter24h }) => {
             addPointsToMap(map, data);
 
 
-            navigator.geolocation.getCurrentPosition(function(position) {
+            navigator.geolocation.getCurrentPosition(function (position) {
                 const userLocationCoord = [position.coords.longitude, position.coords.latitude];
                 addUserLocationPoint(map, userLocationCoord);
 
                 map.fitBounds([
-                    [position.coords.longitude-0.005, position.coords.latitude-0.005], // southwestern corner of the bounds
-                    [position.coords.longitude+0.005, position.coords.latitude+0.005] // northeastern corner of the bounds
+                    [position.coords.longitude - 0.005, position.coords.latitude - 0.005], // southwestern corner of the bounds
+                    [position.coords.longitude + 0.005, position.coords.latitude + 0.005] // northeastern corner of the bounds
                 ]);
             });
         }
@@ -128,6 +128,7 @@ const Map = ({ filterWheelchair, filter24h }) => {
     const addPointsToMap = (map, washrooms) => {
         let id = 0;
         washrooms.forEach((washroom) => {
+            console.log('!!!', filter24h)
             if (filterWheelchair && !(washroom.wheel_access.toLowerCase() === 'yes')) {
                 return;
             }
@@ -199,7 +200,7 @@ const Map = ({ filterWheelchair, filter24h }) => {
 
                 // Set the selected point information in the state
                 setSelectedPoint(washroomProperties);
-                
+
             });
         });
     };
@@ -223,13 +224,13 @@ const Map = ({ filterWheelchair, filter24h }) => {
                 map.remove();
             }
         };
-    }, []);
+    }, [filterWheelchair, filter24h]);
 
     useEffect(() => {
         if (data) {
             initializeMap(data);
         }
-    }, [data]);
+    }, [data, filterWheelchair, filter24h]);
 
     return (
         <div className="flex items-center justify-center">
