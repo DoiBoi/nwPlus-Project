@@ -22,13 +22,72 @@ const Map = () => {
             });
 
             setMap(newMap);
+
+
         }
 
         // Update map data
         if (map && data) {
             addPointsToMap(map, data);
+
+
+            navigator.geolocation.getCurrentPosition(function(position) {
+                const userLocationCoord = [position.coords.longitude, position.coords.latitude];
+                addUserLocationPoint(map, userLocationCoord);
+                alert("here!");
+                // console.log("Longitude is :", );
+            });
         }
+
+
     };
+
+    const addUserLocationPoint = (map, coord) => {
+        map.loadImage('userLocationMarker.png', (error, image) => {
+            if (error) throw error;
+
+            map.addImage(`userLocationMarker`, image);
+
+            map.addSource(`userLocationPoint`, {
+                type: 'geojson',
+                data: {
+                    type: 'FeatureCollection',
+                    features: [
+                        {
+                            type: 'Feature',
+                            geometry: {
+                                type: 'Point',
+                                coordinates: coord,
+                            },
+                            // properties: washroomProperties,
+                        },
+                    ],
+                },
+            });
+
+            map.addLayer({
+                id: `userLocationPoint`,
+                type: 'symbol',
+                source: `userLocationPoint`,
+                layout: {
+                    'icon-image': `userLocationMarker`,
+                    'icon-size': 0.2, // Adjust the size as needed
+                    'icon-anchor': 'bottom', // Adjust the anchor point as needed
+                },
+            });
+
+            // Add hover effect
+            map.on('mouseenter', `userLocationPoint`, () => {
+                map.getCanvas().style.cursor = 'pointer'; // Change cursor on hover
+                map.setPaintProperty(`userLocationPoint`, 'icon-color', '#00F'); // Change color on hover
+            });
+
+            map.on('mouseleave', `userLocationPoint`, () => {
+                map.getCanvas().style.cursor = ''; // Revert cursor on mouseout
+                map.setPaintProperty(`userLocationPoint`, 'icon-color', '#FF0000'); // Revert color on mouseout
+            });
+        });
+    }
 
     const addPointsToMap = (map, washrooms) => {
         let id = 0;
@@ -105,6 +164,20 @@ const Map = () => {
             initializeMap(data);
         }
     }, [data]);
+
+    // useEffect(() => {
+    //     if (navigator.geolocation) {
+    //         navigator.permissions
+    //             .query({ name: "geolocation" })
+    //             .then(function (result) {
+    //                 console.log(result);
+    //             });
+    //     } else {
+    //         console.log("Geolocation is not supported by this browser.");
+    //     }
+    //
+    //
+    // }, []);
 
     return <div id="map" style={{ width: '100%', height: '400px' }} />;
 };
