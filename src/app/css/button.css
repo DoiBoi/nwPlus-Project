@@ -15,8 +15,9 @@
     background-color: rgb(var(--secondary-rgb));
     height: auto;
     width: auto;
+    padding: 10px;
 
-    justify-content: center;
+    /* border-radius: 6%; */
 }
 
 #filters input {
