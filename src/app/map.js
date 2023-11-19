@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 
 
-const initializeMap = () => {
+const initializeMap = (data) => {
     mapboxgl.accessToken = 'pk.eyJ1IjoiY2FsY2l1bS1kb2kiLCJhIjoiY2xwNXBxZnI5MWh1bTJqbzh2bW81bW4xNyJ9.lmPvaF2IOnm9glibmNPrFw';
 
     const map = new mapboxgl.Map({
@@ -11,6 +11,10 @@ const initializeMap = () => {
         center: [-123.1216, 49.2827], // Vancouver, BC coordinates [lng, lat]
         zoom: 9, // starting zoom
     });
+
+    addPointsToMap(map, data);
+
+
 
 
     return () => map.remove();
@@ -72,27 +76,35 @@ const addPoint = (map, coord) => {
     });
 }
 
+const addPointsToMap = (map, washrooms) => {
+    // addPoint(map, [-123.103599022256, 49.2778209665246])
+    console.log(washrooms);
+    for (const washroom in washrooms) {
+        // console.log(washroom[0].name);
+        let coord = [washroom.geo_point_2d.lon, washroom.geo_point_2d.lat]
+        alert(coord);
+        addPoint(map, coord);
+
+    }
+}
+
 
 const Map = () => {
-    const [washrooms, setWashrooms] = useState([])
-
-    useEffect(()=> {
-        console.log(washrooms)
-    }, washrooms)
+    // const [washrooms, setWashrooms] = useState([])
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await fetch('/public-washrooms.json');
-                const data = await response.json();
-                setWashrooms(data)
+                return await response.json();
             } catch (error) {
                 console.error('Error fetching JSON data:', error);
             }
         };
 
-        fetchData();
-        const cleanupMap = initializeMap();
+        const data = fetchData();
+        const cleanupMap = initializeMap(data.json());
+
         return cleanupMap;
     }, []);
     return <div id="map" style={{ width: '100%', height: '400px' }} />;
