@@ -14,11 +14,8 @@ export default function Home() {
       {/* find a bathroom button, + settings/filters */}
       <Button_filters />
 
-      {/* map space */}
-      <div className='flex h-[500px] w-full m-4 items-center justify-center'>
-        {/* Use fixed dimensions for the Map container */}
-        <Map />
-      </div>
+      {/* Use fixed dimensions for the Map container */}
+      <Map />
 
       {/* extra options (eg. report an error) */}
       <div className="flex h-[15%] w-[15%] justify-end ml-auto mr-0">

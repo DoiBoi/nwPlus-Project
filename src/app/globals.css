@@ -33,3 +33,14 @@ body {
 
     overflow-x: hidden;
 }
+
+.white-box {
+  background-color:rgba(255, 255, 255, 0.7);
+  padding: 10px; /* Adjust padding as needed */
+  border-radius: 5%;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row; /* Make sure it's set to row */
+}
