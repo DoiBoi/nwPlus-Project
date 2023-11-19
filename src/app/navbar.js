@@ -5,18 +5,20 @@ const Navbar = () => {
 
     return (
         <div>
-            <nav className="flex flex-row items-center justify-center bg-white">
+            <nav className="flex flex-row items-center justify-center bg-white px-[20px]">
                 {/* logo image */}
-                <div className="h-[50px] w-[50px]">
+                <div className="h-[50px] w-[50px] flex basis-1/3">
                     <img src="/test-logo.png" />
                 </div>
 
-                <div className="flex basis-1/2 items-center justify-center">
+                {/* Title */}
+                <div className="flex basis-1/3 items-center justify-center">
                     <h1 className="text-xl">Washroom wayfinder</h1>
                 </div>
 
+                {/* Extra links */}
                 <ul className="flex basis-1/3">
-                    <li className="flex float-right">
+                    <li className="flex ml-auto mr-0">
                         <a>About the team</a>
                     </li>
                 </ul>
