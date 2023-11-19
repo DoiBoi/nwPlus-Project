@@ -37,6 +37,9 @@ const Map = () => {
     const [map, setMap] = useState(null);
     const [data, setData] = useState(null);
     const [selectedPoint, setSelectedPoint] = useState(null);
+    
+    const [filterWheelchair, setWheelchair] = useState(true);
+    const [filter24h, set24h] = useState(false)
 
     const initializeMap = (data) => {
         mapboxgl.accessToken = 'pk.eyJ1IjoiY2FsY2l1bS1kb2kiLCJhIjoiY2xwNXBxZnI5MWh1bTJqbzh2bW81bW4xNyJ9.lmPvaF2IOnm9glibmNPrFw';
@@ -128,6 +131,14 @@ const Map = () => {
     const addPointsToMap = (map, washrooms) => {
         let id = 0;
         washrooms.forEach((washroom) => {
+            if (filterWheelchair && !(washroom.wheel_access.toLowerCase() === 'yes')) {
+                return;
+            }
+
+            if (filter24h && !(washroom.summer_hours.toLowerCase() === "24 hrs" || washroom.winter_hours.toLowerCase() === "24 hrs")) {
+                return;
+            }
+
             let coord = [washroom.geo_point_2d.lon, washroom.geo_point_2d.lat];
             addPoint(map, coord, id.toString(), washroom);
             id = id + 1;
