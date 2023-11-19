@@ -13,8 +13,7 @@ const Navbar = () => {
 
                 {/* Title */}
                 <div className="flex basis-1/3 items-center justify-center">
-                    <img src="/header_new.png" />
-
+                    {/* <img src="/header_new.png" /> */}
                 </div>
 
                 {/* Extra links */}

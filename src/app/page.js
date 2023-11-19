@@ -20,8 +20,12 @@ export default function Home() {
         {/* logo, title, about the team */}
         <Navbar />
 
+
+
         {!showMap && (
           <form className="flex flex-col items-center justify-center h-full" onSubmit={handleButtonClick}>
+            <img className='mt-15' src="/header_new.png" />
+
             <div className='flex justify-center'>
               <input
                 id="big-button"
@@ -72,7 +76,10 @@ export default function Home() {
           </form>
         )}
 
-        {showMap && <Map filterWheelchair={wheelAccess} filter24h={twentyFourHour} />}
+        {showMap && <div className="flex flex-col items-center justify-center h-full">
+          <img className='mt-15' src="/header_new.png" />
+          <Map filterWheelchair={wheelAccess} filter24h={twentyFourHour} className="mt-10 bt-10" />
+        </div>}
 
         {/* extra options (eg. report an error) */}
         <div className="flex h-[15%] w-[15%] justify-end ml-auto mr-0">
