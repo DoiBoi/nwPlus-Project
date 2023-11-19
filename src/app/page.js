@@ -7,23 +7,28 @@ import Report from "./report";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col">
-      {/* logo, title, about the team */}
-      <Navbar />
+    <>
+      {/* <head>
+        <link href='https://fonts.googleapis.com/css?family=JetBrains Mono' rel='stylesheet'></link>
+      </head> */}
 
-      {/* find a bathroom button, + settings/filters */}
-      <Button_filters />
-      
-      {/* Use fixed dimensions for the Map container */}
-      <Map 
-        setWheelchair: true
-        set24hr: true
-      />
+      <main className="flex min-h-screen flex-col">
+        {/* logo, title, about the team */}
+        <Navbar />
 
-      {/* extra options (eg. report an error) */}
-      <div className="flex h-[15%] w-[15%] justify-end ml-auto mr-0">
-        <Report />
-      </div>
-    </main>
+        {/* find a bathroom button, + settings/filters */}
+        <Button_filters />
+        
+        {/* Use fixed dimensions for the Map container */}
+        <Map 
+          
+        />
+
+        {/* extra options (eg. report an error) */}
+        <div className="flex h-[15%] w-[15%] justify-end ml-auto mr-0">
+          <Report />
+        </div>
+      </main>
+    </>
   );
 }
