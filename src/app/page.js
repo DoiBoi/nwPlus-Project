@@ -10,16 +10,16 @@ export default function Home() {
       {/* logo, title, about the team */}
       <Navbar />
 
-
       {/* find a bathroom button, + settings/filters */}
       <Button_filters />
 
       {/* map space */}
-      <div className='flex h-[25%] w-[25%] m-[50px]'>
-        <Map /> 
+      <div className='flex h-96 w-full m-4'>
+        {/* Use fixed dimensions for the Map container */}
+        <Map />
       </div>
 
       {/* extra options (eg. report an error) */}
     </main>
-  )
+  );
 }
