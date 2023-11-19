@@ -1,1 +1,11 @@
 /* Styling for big button will go here */
+
+#big-button {
+    background-color: antiquewhite;
+    margin: 20px;
+    padding: 30px;
+    border: solid 1px black;
+    border-radius: 10px;
+
+    font-size: 20px;
+}

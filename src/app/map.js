@@ -84,7 +84,7 @@ const Map = () => {
         }
     }, [data]);
 
-    return <div id="map" style={{ width: '100%', height: '400px' }} />;
+    return <div id="map" style={{ width: '80%', height: '100%' }} />;
 };
 
 export default Map;

@@ -12,7 +12,7 @@ const Button_filters = () => {
         <div>
             {/* This is where the big button lives */}
             <div>
-                <button>Washroom near me</button>
+                <button id="big-button">Find washrooms near me!</button>
             </div>
 
             {/* This is where the other options are */}

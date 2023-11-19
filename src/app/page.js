@@ -11,10 +11,12 @@ export default function Home() {
       <Navbar />
 
       {/* find a bathroom button, + settings/filters */}
-      <Button_filters />
+      <div className='h-[300px] w-full'>
+        <Button_filters />
+      </div>
 
       {/* map space */}
-      <div className='flex h-96 w-full m-4'>
+      <div className='flex h-[500px] w-full m-4 items-center justify-center'>
         {/* Use fixed dimensions for the Map container */}
         <Map />
       </div>
