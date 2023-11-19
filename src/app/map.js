@@ -46,32 +46,9 @@ const Map = () => {
                     'circle-color': '#FF0000',
                 },
             });
-
-            // Add event listeners for popups, etc., outside the on load event
-            map.on('click', `point-${id}`, (e) => {
-                const coordinates = e.features[0].geometry.coordinates.slice();
-                const description = e.features[0].properties.name;
-
-                while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-                    coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-                }
-
-                new mapboxgl.Popup()
-                    .setLngLat(coordinates)
-                    .setHTML(description)
-                    .addTo(map);
-            });
-
-            map.on('mouseenter', `point-${id}`, () => {
-                map.getCanvas().style.cursor = 'pointer';
-            });
-
-            map.on('mouseleave', `point-${id}`, () => {
-                map.getCanvas().style.cursor = '';
-            });
-
         });
     };
+
 
     const addPointsToMap = (map, washrooms) => {
         let id = 0;
