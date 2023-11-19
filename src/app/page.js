@@ -11,7 +11,7 @@ export default function Home() {
 
 
       {/* find a bathroom button, + settings/filters */}
-
+      
 
       {/* map space */}
       <div id="map" className='flex h-[25%] w-[25%] m-[50px]'>

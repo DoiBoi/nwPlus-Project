@@ -4,8 +4,11 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  /* beige */
+  --background-start-rgb: 217, 185, 155;
+
+  /* also beige */
+  --background-end-rgb: 217, 185, 155;
 }
 
 /* This is just for dark mode */
