@@ -1,6 +1,5 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
-
 
 
 const initializeMap = () => {
@@ -75,11 +74,18 @@ const addPoint = (map, coord) => {
 
 
 const Map = () => {
+    const [washrooms, setWashrooms] = useState([])
+
+    useEffect(()=> {
+        console.log(washrooms)
+    }, washrooms)
+
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await fetch('/public-washrooms.json');
                 const data = await response.json();
+                setWashrooms(data)
             } catch (error) {
                 console.error('Error fetching JSON data:', error);
             }
