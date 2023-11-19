@@ -2,8 +2,6 @@ import { useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 
 const Map = () => {
-    // const [washrooms, setWashrooms] = useState([])
-
     const initializeMap = (data) => {
         mapboxgl.accessToken = 'pk.eyJ1IjoiY2FsY2l1bS1kb2kiLCJhIjoiY2xwNXBxZnI5MWh1bTJqbzh2bW81bW4xNyJ9.lmPvaF2IOnm9glibmNPrFw';
 
@@ -18,72 +16,72 @@ const Map = () => {
         return () => map.remove();
     };
 
-    const addPoint = (map, coord, id) => {
+    const addPoint = (map, coord, id, washroomProperties) => {
         map.on('load', () => {
-          map.addSource(`point-${id}`, {
-            type: 'geojson',
-            data: {
-              type: 'FeatureCollection',
-              features: [
-                {
-                  type: 'Feature',
-                  geometry: {
-                    type: 'Point',
-                    coordinates: coord,
-                  },
-                  properties: {
-                    title: 'My Point',
-                    description: 'This is a sample point.',
-                  },
+            map.addSource(`point-${id}`, {
+                type: 'geojson',
+                data: {
+                    type: 'FeatureCollection',
+                    features: [
+                        {
+                            type: 'Feature',
+                            geometry: {
+                                type: 'Point',
+                                coordinates: coord,
+                            },
+                            properties: washroomProperties,
+                        },
+                    ],
                 },
-              ],
-            },
-          });
-      
-          // Add a layer to render the point on the map
-          map.addLayer({
-            id: `point-${id}`,
-            type: 'circle',
-            source: `point-${id}`,
-            paint: {
-              'circle-radius': 8,
-              'circle-color': '#FF0000', // Red color for the point
-            },
-          });
-      
-          // Create a popup for the point
-          const popup = new mapboxgl.Popup({
-            closeButton: false,
-            closeOnClick: false,
-          });
-      
-          // Display a popup when the point is clicked
-          map.on('mouseenter', `point-${id}`, (e) => {
-            const coordinates = e.features[0].geometry.coordinates.slice();
-            const { title, description } = e.features[0].properties;
-      
-            popup
-              .setLngLat(coordinates)
-              .setHTML(`<h3>${title}</h3><p>${description}</p>`)
-              .addTo(map);
-          });
-      
-          // Hide the popup when the mouse leaves the point
-          map.on('mouseleave', `point-${id}`, () => {
-            popup.remove();
-          });
+            });
+
+            map.addLayer({
+                id: `point-${id}`,
+                type: 'circle',
+                source: `point-${id}`,
+                paint: {
+                    'circle-radius': 4,
+                    'circle-color': '#FF0000',
+                },
+            });
+
+            // Add event listeners for popups, etc., outside the on load event
+            map.on('click', `point-${id}`, (e) => {
+                const coordinates = e.features[0].geometry.coordinates.slice();
+                const description = e.features[0].properties.name;
+
+                while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                    coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+                }
+
+                new mapboxgl.Popup()
+                    .setLngLat(coordinates)
+                    .setHTML(description)
+                    .addTo(map);
+            });
+
+            map.on('mouseenter', `point-${id}`, () => {
+                map.getCanvas().style.cursor = 'pointer';
+            });
+
+            map.on('mouseleave', `point-${id}`, () => {
+                map.getCanvas().style.cursor = '';
+            });
+
         });
-      };
-      
-      const addPointsToMap = (map, washrooms) => {
+    };
+
+
+    const addPointsToMap = (map, washrooms) => {
         let id = 0;
         washrooms.forEach((washroom) => {
-          let coord = [washroom.geo_point_2d.lon, washroom.geo_point_2d.lat];
-          addPoint(map, coord, id.toString());
-          id = id + 1;
+            let coord = [washroom.geo_point_2d.lon, washroom.geo_point_2d.lat];
+            addPoint(map, coord, id.toString(), washroom);
+            id = id + 1;
         });
-      };
-      
+    };
+
+
 
     useEffect(() => {
         const fetchData = async () => {
