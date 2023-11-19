@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 
 const Map = () => {
+    const [data, setData] = useState(null);
+
     const initializeMap = (data) => {
         mapboxgl.accessToken = 'pk.eyJ1IjoiY2FsY2l1bS1kb2kiLCJhIjoiY2xwNXBxZnI5MWh1bTJqbzh2bW81bW4xNyJ9.lmPvaF2IOnm9glibmNPrFw';
 
@@ -71,7 +73,6 @@ const Map = () => {
         });
     };
 
-
     const addPointsToMap = (map, washrooms) => {
         let id = 0;
         washrooms.forEach((washroom) => {
@@ -81,25 +82,25 @@ const Map = () => {
         });
     };
 
-
-
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await fetch('/public-washrooms.json');
-                return await response.json();
+                const jsonData = await response.json();
+                setData(jsonData);
             } catch (error) {
                 console.error('Error fetching JSON data:', error);
             }
         };
 
-        const fetchDataAndInitializeMap = async () => {
-            const data = await fetchData();
-            initializeMap(data);
-        };
-
-        fetchDataAndInitializeMap();
+        fetchData();
     }, []);
+
+    useEffect(() => {
+        if (data) {
+            initializeMap(data);
+        }
+    }, [data]);
 
 
 
