@@ -2,6 +2,7 @@
 import React from 'react';
 import Map from './map';
 import Navbar from './navbar';
+import Button_filters from './button_filters';
 
 export default function Home() {
   return (
@@ -11,10 +12,10 @@ export default function Home() {
 
 
       {/* find a bathroom button, + settings/filters */}
-      
+      <Button_filters />
 
       {/* map space */}
-      <div id="map" className='flex h-[25%] w-[25%] m-[50px]'>
+      <div className='flex h-[25%] w-[25%] m-[50px]'>
         <Map /> 
       </div>
 
