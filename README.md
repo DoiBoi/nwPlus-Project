@@ -17,6 +17,7 @@ Technologies used:
 - MapBox
 - Next.js
 - TailwindCSS
+<img width="1139" alt="Screenshot 2023-11-19 at 4 44 20 PM" src="https://github.com/DoiBoi/nwPlus-Project/assets/111398191/1e802a2f-259d-4f97-ad3c-12de8db7d71b">
 
 ### Preview
 
