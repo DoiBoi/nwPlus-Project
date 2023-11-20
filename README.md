@@ -9,6 +9,15 @@ Hackathon Team:
 
 
 Data from [the City of Vancouver](https://opendata.vancouver.ca/explore/dataset/public-washrooms/export/?location=8,49.24162,-122.7935)
+
+Technologies used:
+- AgentHub for our CI/CD
+- React framework
+- JavaScript
+- MapBox
+- Next.js
+- TailwindCSS
+
 ### Preview
 
 
