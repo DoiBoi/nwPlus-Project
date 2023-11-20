@@ -19,12 +19,12 @@ const Navbar = () => {
                 </div>
 
                 {/* Extra links */}
-                <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-end', paddingRight: '0px' }}>
+                <div className="flex-shrink-0 ml-auto" style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-end', paddingRight: '0px' }}>
                     {/* Adjust margin for spacing */}
                     {/* <div style={{ margin: '0px' }}> */}
                     {/* Link wrapping the image without default styling */}
                     <a href="https://github.com/DoiBoi/nwPlus-Project" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-                        <img style={{ width: '20%', height: '20%', border: 'none' }} src="/github-mark.png" alt="GitHub Logo" />
+                        <img style={{ width: '24px', height: '24px', border: 'none' }} src="/github-mark.png" alt="GitHub Logo" />
                     </a>
                     {/* </div> */}
                 </div>
