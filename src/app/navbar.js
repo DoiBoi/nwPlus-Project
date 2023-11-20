@@ -4,7 +4,7 @@ const Navbar = () => {
     // use effect, whatever else goes here
 
     return (
-        <div>
+        <div className = "mt-2">
             <nav className="flex flex-row items-center justify-center px-[20px] bg-[rgb(var(--secondary-rgb))]">
                 {/* logo image */}
                 <div className="h-[40px] w-[40px] flex basis-1/3">
