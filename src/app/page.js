@@ -8,6 +8,8 @@ export default function Home() {
   const [showMap, setShowMap] = useState(false);
   const [wheelAccess, setWheelAccess] = useState(false);
   const [twentyFourHour, setTwentyFourHour] = useState(false);
+  const [showError, setShowError] = useState(false);
+
 
   const handleButtonClick = () => {
     setShowMap(true);
@@ -82,9 +84,18 @@ export default function Home() {
         </div>}
 
         {/* extra options (eg. report an error) */}
-        <div className="flex h-[15%] w-[15%] justify-end ml-auto mr-0">
-          <Report />
+        <div className="fixed bottom-[30px] right-[30px]">
+            {/* Error message icons created by Anggara - Flaticon  */}
+            <img className="h-[50px] cursor-pointer" src="error-message.png" onClick={() => {
+              setShowError(true);
+            }}/>
         </div>
+
+        {showError && <Report showError={showError} setShowError={setShowError} />}
+
+        {/* Used to blur the screen */}
+        {showError && <div id="blur" className="fixed h-full w-full overlay"></div>}
+
       </main>
     </>
   );
