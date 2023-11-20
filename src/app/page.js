@@ -85,6 +85,16 @@ export default function Home() {
         <div className="flex h-[15%] w-[15%] justify-end ml-auto mr-0">
           <Report />
         </div>
+
+        <div color="blue" id="about-the-team" className="flex h-[105%] w-[105%] align-items-md-end flex-shrink-0 mt-[250px] justify-center ml-auto mr-0">
+          <p>This project would not be possible without our amazing team:
+          Bryan, Vassily, Jordan, Sean
+            <br></br>
+            <a href="https://opendata.vancouver.ca/explore/dataset/public-washrooms/map/?location=12,49.2594,-123.10009" target="_blank" rel="noopener noreferrer">
+              Dataset retreived from City of Vancouver
+            </a>
+          </p>
+        </div>
       </main>
     </>
   );

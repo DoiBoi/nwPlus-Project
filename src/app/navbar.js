@@ -1,5 +1,7 @@
 // consts go here
 
+import React from "react";
+
 const Navbar = () => {
     // use effect, whatever else goes here
 
@@ -17,11 +19,11 @@ const Navbar = () => {
                 </div>
 
                 {/* Extra links */}
-                <ul className="flex basis-1/3">
-                    <li className="flex ml-auto mr-0">
-                        <a>About the team</a>
-                    </li>
-                </ul>
+                <div className="flex basis-1/3 items-right justify-right">
+                    <a href="https://github.com/DoiBoi/nwPlus-Project" target="_blank" rel="noopener noreferrer">
+                        <img style={{ width: '50%', height: '50%' }} src="/github-mark.png" alt="GitHub Logo" />
+                    </a>
+                </div>
             </nav>
         </div>
     )
