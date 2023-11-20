@@ -107,8 +107,8 @@ const Map = ({ filterWheelchair, filter24h }) => {
                 source: `userLocationPoint`,
                 layout: {
                     'icon-image': `userLocationMarker`,
-                    'icon-size': 0.2, // Adjust the size as needed
-                    'icon-anchor': 'bottom', // Adjust the anchor point as needed
+                    'icon-size': 0.5, // Adjust the size as needed
+                    'icon-anchor': 'top', // Adjust the anchor point as needed
                 },
             });
 
@@ -172,7 +172,7 @@ const Map = ({ filterWheelchair, filter24h }) => {
                 source: `point-${id}`,
                 layout: {
                     'icon-image': `marker-${id}`,
-                    'icon-size': 1.5,
+                    'icon-size': 0.7,
                     'icon-anchor': 'bottom',
                 },
             });
@@ -194,7 +194,7 @@ const Map = ({ filterWheelchair, filter24h }) => {
                 }
                 map.flyTo({
                     center: coord,
-                    zoom: 12, // Adjust the zoom level as needed
+                    zoom: 15, // Adjust the zoom level as needed
                     speed: 1, // Adjust the flying speed
                 });
 
